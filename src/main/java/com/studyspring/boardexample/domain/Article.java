@@ -19,11 +19,11 @@ public class Article {
     private String contents;
 
     @JoinColumn(name = "writer_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
     private Member writer;
 
     @JoinColumn(name = "category_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Category.class, fetch = FetchType.LAZY)
     private Category category;
 
     @Column(name = "created_at")
