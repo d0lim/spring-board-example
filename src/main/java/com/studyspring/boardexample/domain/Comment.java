@@ -18,11 +18,11 @@ public class Comment {
     private String contents;
 
     @JoinColumn(name = "writer_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
     private Member writer;
 
     @JoinColumn(name = "article_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Article.class, fetch = FetchType.LAZY)
     private Article article;
 
     @Column(name = "created_at")
