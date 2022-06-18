@@ -16,11 +16,11 @@ public class Notification {
     private Long id;
 
     @JoinColumn(name = "from_member_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
     private Member fromMember;
 
     @JoinColumn(name = "to_member_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
     private Member toMember;
 
     @Column(name = "notification_target_type")
@@ -28,11 +28,11 @@ public class Notification {
     private NotificationTargetType notificationTargetType;
 
     @JoinColumn(name = "target_article_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Article.class, fetch = FetchType.LAZY)
     private Article targetArticle;
 
     @JoinColumn(name = "target_comment_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Comment.class, fetch = FetchType.LAZY)
     private Comment targetComment;
 
     @Column(name = "created_at")
