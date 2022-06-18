@@ -1,6 +1,7 @@
 package com.studyspring.boardexample.domain;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -9,18 +10,19 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "scraps")
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Scrap {
     @Id
     @GeneratedValue
     private Long id;
 
     @JoinColumn(name = "scrap_member_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
     private Member scrapMember;
 
     @JoinColumn(name = "scrap_article_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Article.class, fetch = FetchType.LAZY)
     private Article scrapArticle;
 
     @Column(name = "created_at")

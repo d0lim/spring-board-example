@@ -1,6 +1,7 @@
 package com.studyspring.boardexample.domain;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -9,7 +10,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "comments")
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Comment {
     @Id
     @GeneratedValue
@@ -18,11 +20,11 @@ public class Comment {
     private String contents;
 
     @JoinColumn(name = "writer_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
     private Member writer;
 
     @JoinColumn(name = "article_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Article.class, fetch = FetchType.LAZY)
     private Article article;
 
     @Column(name = "created_at")

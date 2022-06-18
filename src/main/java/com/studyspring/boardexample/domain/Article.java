@@ -1,6 +1,7 @@
 package com.studyspring.boardexample.domain;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -9,7 +10,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "articles")
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Article {
     @Id
     @GeneratedValue
@@ -19,11 +21,11 @@ public class Article {
     private String contents;
 
     @JoinColumn(name = "writer_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
     private Member writer;
 
     @JoinColumn(name = "category_id")
-    @ManyToOne
+    @ManyToOne(targetEntity = Category.class, fetch = FetchType.LAZY)
     private Category category;
 
     @Column(name = "created_at")
