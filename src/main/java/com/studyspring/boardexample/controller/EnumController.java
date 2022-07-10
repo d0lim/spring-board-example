@@ -24,19 +24,6 @@ public class EnumController {
         return enums;
     }
 
-    @GetMapping("/value")
-    public Map<String, List<EnumValue>> getEnumValue() {
-        Map<String, List<EnumValue>> enumValues = new LinkedHashMap<>();
 
-        enumValues.put("userRole", toEnumValues(UserRole.class));
-
-        return enumValues;
-    }
-
-    private List<EnumValue> toEnumValues(Class<? extends EnumModel> e) {
-        return Arrays
-                .stream(e.getEnumConstants())
-                .map(EnumValue::new)
-                .collect(Collectors.toList());
     }
 }
