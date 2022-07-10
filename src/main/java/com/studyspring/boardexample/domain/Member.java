@@ -37,4 +37,11 @@ public class Member {
     private LocalDateTime updatedAt;
 
     private boolean deleted = false;
+
+    @Builder
+    public Member(String username, String password, UserRole role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
 }
