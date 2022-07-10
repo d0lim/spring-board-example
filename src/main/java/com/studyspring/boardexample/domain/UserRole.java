@@ -1,6 +1,8 @@
 package com.studyspring.boardexample.domain;
 
-public enum UserRole {
+import com.studyspring.boardexample.constants.EnumModel;
+
+public enum UserRole implements EnumModel {
     ADMIN("ROLE_ADMIN"),
     USER("ROLE_ADMIN");
 
@@ -10,10 +12,12 @@ public enum UserRole {
         this.role_user = role_user;
     }
 
+    @Override
     public String getKey() {
         return name();
     }
 
+    @Override
     public String getValue() {
         return role_user;
     }
