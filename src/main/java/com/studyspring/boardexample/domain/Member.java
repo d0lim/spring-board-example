@@ -44,4 +44,8 @@ public class Member {
         this.password = password;
         this.role = role;
     }
+
+    public void encodePassword(PasswordEncoder passwordEncoder) {
+        this.password = passwordEncoder.encode(this.password);
+    }
 }
