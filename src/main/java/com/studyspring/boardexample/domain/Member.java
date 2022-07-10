@@ -14,12 +14,16 @@ import java.time.LocalDateTime;
 @Table(name = "members")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
+
     @Id
     @GeneratedValue
     private Long id;
-
     private String username;
     private String password;
+
+    @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private UserRole role;
 
     @Column(name = "full_name")
     private String fullName;
